@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio Satrio</title>
+  <meta name="description" content="Portofolio Satrio Dwi Saipul Bagus, mahasiswa Teknik Informatika di bidang Web Development dan Data Analysis.">
+
+  <!-- Terapkan tema tersimpan sebelum halaman digambar (mencegah kilatan warna) -->
+  <script>
+    try {
+      const saved = localStorage.getItem("theme");
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      if (saved === "dark" || (!saved && prefersDark)) {
+        document.documentElement.classList.add("dark");
+      }
+    } catch (e) {}
+  </script>
+
+  <link rel="stylesheet" href="./dist/output.css">
+</head>
+
+<body class="bg-gray-50 text-gray-900 dark:bg-gray-950 dark:text-gray-100 transition-colors duration-300">
+
+  <!-- ================= NAVBAR ================= -->
+  <header class="fixed inset-x-0 top-0 z-50 border-b border-gray-200 bg-white/80 backdrop-blur dark:border-gray-800 dark:bg-gray-950/80">
+    <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 sm:px-6" aria-label="Navigasi utama">
+
+      <!-- Logo -->
+      <a href="#home" class="text-lg font-bold tracking-tight">
+        Portfolio <span class="text-brand-600 dark:text-brand-400">Satrio</span>
+      </a>
+
+      <!-- Menu desktop -->
+      <ul class="hidden items-center gap-8 md:flex">
+        <li><a href="#home" class="nav-link text-sm font-medium text-gray-600 transition hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-400">Home</a></li>
+        <li><a href="#about" class="nav-link text-sm font-medium text-gray-600 transition hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-400">About</a></li>
+        <li><a href="#skills" class="nav-link text-sm font-medium text-gray-600 transition hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-400">Skills</a></li>
+        <li><a href="#projects" class="nav-link text-sm font-medium text-gray-600 transition hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-400">Projects</a></li>
+        <li><a href="#contact" class="nav-link text-sm font-medium text-gray-600 transition hover:text-brand-600 dark:text-gray-300 dark:hover:text-brand-400">Contact</a></li>
+      </ul>
+
+      <!-- Tombol kanan: tema + hamburger -->
+      <div class="flex items-center gap-2">
+
+        <!-- Tombol tema -->
+        <button id="theme-toggle" type="button" aria-label="Ganti mode tampilan"
+          class="rounded-lg p-2 text-gray-600 transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-400 dark:text-gray-300 dark:hover:bg-gray-800">
+          <!-- Ikon bulan: tampil saat mode terang -->
+          <svg class="h-5 w-5 dark:hidden" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+          </svg>
+          <!-- Ikon matahari: tampil saat mode gelap -->
+          <svg class="hidden h-5 w-5 dark:block" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364 6.364l-.707-.707M6.343 6.343l-.707-.707m12.728 0l-.707.707M6.343 17.657l-.707.707M16 12a4 4 0 11-8 0 4 4 0 018 0z" />
+          </svg>
+        </button>
+
+        <!-- Tombol hamburger (hanya mobile) -->
+        <button id="menu-toggle" type="button" aria-label="Buka menu" aria-expanded="false" aria-controls="mobile-menu"
+          class="rounded-lg p-2 text-gray-600 transition hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-brand-400 dark:text-gray-300 dark:hover:bg-gray-800 md:hidden">
+          <svg id="icon-open" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+          <svg id="icon-close" class="hidden h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Menu mobile -->
+    <div id="mobile-menu" class="hidden border-t border-gray-200 dark:border-gray-800 md:hidden">
+      <ul class="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-3 sm:px-6">
+        <li><a href="#home" class="mobile-link block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800">Home</a></li>
+        <li><a href="#about" class="mobile-link block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800">About</a></li>
+        <li><a href="#skills" class="mobile-link block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800">Skills</a></li>
+        <li><a href="#projects" class="mobile-link block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800">Projects</a></li>
+        <li><a href="#contact" class="mobile-link block rounded-lg px-3 py-2 text-sm font-medium text-gray-700 hover:bg-gray-100 dark:text-gray-200 dark:hover:bg-gray-800">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <!-- ================= SECTION SEMENTARA (untuk uji scroll) ================= -->
+  <main>
+    <!-- ================= HERO ================= -->
+    <section id="home" class="relative flex min-h-screen items-center overflow-hidden px-4 pt-24 pb-16 sm:px-6">
+
+      <!-- Dekorasi latar -->
+      <div class="pointer-events-none absolute -top-24 -right-24 h-96 w-96 rounded-full bg-brand-500/20 blur-3xl" aria-hidden="true"></div>
+      <div class="pointer-events-none absolute -bottom-32 -left-24 h-96 w-96 rounded-full bg-brand-700/20 blur-3xl" aria-hidden="true"></div>
+
+      <div class="relative mx-auto grid w-full max-w-6xl items-center gap-12 lg:grid-cols-2">
+
+        <!-- Kolom teks -->
+        <div class="order-2 text-center lg:order-1 lg:text-left">
+          <p class="mb-4 text-sm font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400">
+            Halo, saya
+          </p>
+          <h1 class="text-4xl font-extrabold leading-tight tracking-tight sm:text-5xl xl:text-6xl">
+            Satrio Dwi Saipul Bagus
+          </h1>
+          <p class="mt-4 text-xl font-medium text-gray-600 sm:text-2xl dark:text-gray-300">
+            Saya seorang
+            <span id="role-text" class="inline-block text-brand-600 transition-opacity duration-300 dark:text-brand-400">Web Developer</span>
+          </p>
+          <p class="mt-6 max-w-xl text-base leading-relaxed text-gray-600 sm:text-lg lg:max-w-2xl dark:text-gray-400 mx-auto lg:mx-0">
+            Informatics Engineering Student di Universitas Teknokrat Indonesia yang tertarik
+            pada Web Development dan Data Analysis. Saya senang membangun tampilan web
+            yang rapi, responsif, dan mudah digunakan.
+          </p>
+
+          <div class="mt-8 flex flex-wrap justify-center gap-4 lg:justify-start">
+            <a href="#projects"
+              class="rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 dark:focus:ring-offset-gray-950">
+              Lihat Proyek
+            </a>
+            <a href="#contact"
+              class="rounded-lg border border-gray-300 px-6 py-3 font-semibold text-gray-800 transition hover:-translate-y-0.5 hover:border-brand-500 hover:text-brand-600 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 dark:border-gray-700 dark:text-gray-200 dark:hover:border-brand-400 dark:hover:text-brand-400 dark:focus:ring-offset-gray-950">
+              Hubungi Saya
+            </a>
+          </div>
+        </div>
+
+        <!-- Kolom foto -->
+        <div class="order-1 flex justify-center lg:order-2 lg:justify-end">
+          <div class="relative h-64 w-64 sm:h-80 sm:w-80">
+            <!-- Bingkai garis yang bergeser -->
+            <div class="absolute inset-0 translate-x-3 translate-y-3 rounded-3xl border-2 border-brand-500/60" aria-hidden="true"></div>
+
+            <!-- Bingkai utama: inisial sebagai cadangan, foto menutupinya jika ada -->
+            <div class="relative flex h-full w-full items-center justify-center overflow-hidden rounded-3xl bg-linear-to-br from-brand-500 to-brand-800 shadow-xl shadow-brand-900/20">
+              <span class="text-6xl font-extrabold text-white/90" aria-hidden="true">SD</span>
+              <img src="./assets/images/profile.jpeg" alt="Foto Satrio Dwi Saipul Bagus"
+                class="absolute inset-0 h-full w-full object-cover"
+                onerror="this.remove()">
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================= ABOUT ================= -->
+    <section id="about" class="bg-gray-100 px-4 py-24 sm:px-6 dark:bg-gray-900">
+      <div class="mx-auto max-w-6xl">
+
+        <!-- Judul section -->
+        <div class="mb-12">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400">Tentang Saya</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">About Me</h2>
+        </div>
+
+        <div class="grid gap-12 lg:grid-cols-2 lg:items-start">
+
+          <!-- Teks profil -->
+          <div class="space-y-5 leading-relaxed text-gray-600 dark:text-gray-400">
+            <p>
+              Saya Satrio Dwi Saipul Bagus, mahasiswa Teknik Informatika di
+              <span class="font-semibold text-gray-900 dark:text-gray-100">Universitas Teknokrat Indonesia</span>.
+              Saya sedang mendalami pengembangan web, mulai dari merancang tampilan
+              hingga membangun sisi server.
+            </p>
+            <p>
+              Minat saya berada di dua bidang: <span class="font-semibold text-gray-900 dark:text-gray-100">Web Development</span>
+              dan <span class="font-semibold text-gray-900 dark:text-gray-100">Data Analysis</span>.
+              Saya belajar dengan membuat proyek nyata, dan portofolio ini adalah salah satunya.
+            </p>
+            <p>
+              Saat ini saya terus melatih kemampuan dengan HTML, Tailwind CSS, JavaScript, Laravel,
+              dan MySQL, serta terbuka untuk kesempatan belajar dan berkolaborasi.
+            </p>
+          </div>
+
+          <!-- Kartu pendidikan + statistik -->
+          <div class="space-y-6">
+
+            <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm transition hover:-translate-y-1 hover:shadow-md dark:border-gray-800 dark:bg-gray-950">
+              <p class="text-sm font-semibold uppercase tracking-wide text-brand-600 dark:text-brand-400">Pendidikan</p>
+              <h3 class="mt-2 text-lg font-bold">S1 Teknik Informatika</h3>
+              <p class="text-gray-600 dark:text-gray-400">Universitas Teknokrat Indonesia</p>
+            </div>
+
+            <div class="grid grid-cols-3 gap-4">
+              <div class="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm dark:border-gray-800 dark:bg-gray-950">
+                <p class="text-2xl font-extrabold text-brand-600 dark:text-brand-400">5+</p>
+                <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">Teknologi dipelajari</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm dark:border-gray-800 dark:bg-gray-950">
+                <p class="text-2xl font-extrabold text-brand-600 dark:text-brand-400">3</p>
+                <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">Proyek contoh</p>
+              </div>
+              <div class="rounded-2xl border border-gray-200 bg-white p-4 text-center shadow-sm dark:border-gray-800 dark:bg-gray-950">
+                <p class="text-2xl font-extrabold text-brand-600 dark:text-brand-400">2</p>
+                <p class="mt-1 text-xs text-gray-600 dark:text-gray-400">Bidang minat</p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ================= SKILLS ================= -->
+    <section id="skills" class="px-4 py-24 sm:px-6">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="reveal mb-12">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400">Kemampuan</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Skills</h2>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-3">
+
+          <!-- Frontend -->
+          <div class="reveal rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M9.75 17L9 20l-1 1h8l-1-1-.75-3M3 13h18M5 17h14a2 2 0 002-2V5a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </span>
+              <h3 class="text-lg font-bold">Frontend</h3>
+            </div>
+
+            <ul class="mt-6 space-y-4">
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>HTML</span><span class="text-gray-500 dark:text-gray-400">85%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="85"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>CSS</span><span class="text-gray-500 dark:text-gray-400">80%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="80"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>Tailwind CSS</span><span class="text-gray-500 dark:text-gray-400">75%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="75"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>JavaScript</span><span class="text-gray-500 dark:text-gray-400">65%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="65"></div></div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Backend & Database -->
+          <div class="reveal rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4 7v10c0 2 3.6 3 8 3s8-1 8-3V7M4 7c0 2 3.6 3 8 3s8-1 8-3M4 7c0-2 3.6-3 8-3s8 1 8 3M4 12c0 2 3.6 3 8 3s8-1 8-3" />
+                </svg>
+              </span>
+              <h3 class="text-lg font-bold">Backend &amp; Database</h3>
+            </div>
+
+            <ul class="mt-6 space-y-4">
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>PHP</span><span class="text-gray-500 dark:text-gray-400">70%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="70"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>Laravel</span><span class="text-gray-500 dark:text-gray-400">60%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="60"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>MySQL</span><span class="text-gray-500 dark:text-gray-400">70%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="70"></div></div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Tools -->
+          <div class="reveal rounded-2xl border border-gray-200 bg-white p-6 shadow-sm dark:border-gray-800 dark:bg-gray-900">
+            <div class="flex items-center gap-3">
+              <span class="flex h-10 w-10 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+                <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </span>
+              <h3 class="text-lg font-bold">Tools</h3>
+            </div>
+
+            <ul class="mt-6 space-y-4">
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>Git &amp; GitHub</span><span class="text-gray-500 dark:text-gray-400">65%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="65"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>VS Code</span><span class="text-gray-500 dark:text-gray-400">85%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="85"></div></div>
+              </li>
+              <li>
+                <div class="mb-1 flex justify-between text-sm font-medium"><span>XAMPP</span><span class="text-gray-500 dark:text-gray-400">75%</span></div>
+                <div class="h-2 rounded-full bg-gray-200 dark:bg-gray-800"><div class="skill-bar h-2 rounded-full bg-brand-500" data-level="75"></div></div>
+              </li>
+            </ul>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PROJECTS ================= -->
+    <section id="projects" class="bg-gray-100 px-4 py-24 sm:px-6 dark:bg-gray-900">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="mb-12">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400">Karya</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Projects</h2>
+        </div>
+
+        <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+
+          <!-- Proyek 1 -->
+          <article class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-gray-800 dark:bg-gray-950">
+            <div class="relative flex h-44 items-center justify-center overflow-hidden bg-linear-to-br from-brand-500 to-brand-800 text-5xl font-extrabold text-white/90">
+              <span aria-hidden="true">01</span>
+              <img src="./assets/images/project-1.png" alt="Tampilan Website Portofolio Pribadi"
+                class="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                loading="lazy" onerror="this.remove()">
+            </div>
+
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-bold transition group-hover:text-brand-600 dark:group-hover:text-brand-400">Website Portofolio Pribadi</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                Website portofolio responsif dengan mode gelap dan terang, dibangun bertahap dari frontend hingga dashboard admin.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">Tailwind CSS</span>
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">Laravel</span>
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">MySQL</span>
+              </div>
+              <div class="mt-5 flex gap-4 text-sm font-semibold">
+                <a href="#" class="text-brand-600 hover:underline dark:text-brand-400">Demo</a>
+                <a href="#" class="text-gray-600 hover:underline dark:text-gray-400">Kode</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyek 2 -->
+          <article class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-gray-800 dark:bg-gray-950">
+            <div class="relative flex h-44 items-center justify-center overflow-hidden bg-linear-to-br from-brand-600 to-brand-900 text-5xl font-extrabold text-white/90">
+              <span aria-hidden="true">02</span>
+              <img src="./assets/images/project-2.jpg" alt="Tampilan Sistem Manajemen Tugas"
+                class="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-bold transition group-hover:text-brand-600 dark:group-hover:text-brand-400">Sistem Manajemen Tugas</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                Aplikasi untuk mencatat, mengelompokkan, dan memantau tugas harian dengan status yang mudah diperbarui.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">PHP</span>
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">MySQL</span>
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">JavaScript</span>
+              </div>
+              <div class="mt-5 flex gap-4 text-sm font-semibold">
+                <a href="#" class="text-brand-600 hover:underline dark:text-brand-400">Demo</a>
+                <a href="#" class="text-gray-600 hover:underline dark:text-gray-400">Kode</a>
+              </div>
+            </div>
+          </article>
+
+          <!-- Proyek 3 -->
+          <article class="group flex flex-col overflow-hidden rounded-2xl border border-gray-200 bg-white shadow-sm transition hover:-translate-y-1 hover:shadow-lg dark:border-gray-800 dark:bg-gray-950">
+            <div class="relative flex h-44 items-center justify-center overflow-hidden bg-linear-to-br from-brand-700 to-gray-900 text-5xl font-extrabold text-white/90">
+              <span aria-hidden="true">03</span>
+              <img src="./assets/images/project-3.png" alt="Tampilan Dashboard Analisis Data"
+                class="absolute inset-0 h-full w-full object-cover transition duration-300 group-hover:scale-105"
+                loading="lazy" onerror="this.remove()">
+            </div>
+            <div class="flex flex-1 flex-col p-6">
+              <h3 class="text-lg font-bold transition group-hover:text-brand-600 dark:group-hover:text-brand-400">Dashboard Analisis Data</h3>
+              <p class="mt-2 flex-1 text-sm leading-relaxed text-gray-600 dark:text-gray-400">
+                Dashboard sederhana yang merangkum data menjadi tabel dan grafik agar mudah dibaca dan dibandingkan.
+              </p>
+              <div class="mt-4 flex flex-wrap gap-2">
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">Python</span>
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">Excel</span>
+                <span class="rounded-full bg-gray-100 px-2.5 py-1 text-xs font-medium text-gray-700 dark:bg-gray-800 dark:text-gray-300">Data Visualization</span>
+              </div>
+              <div class="mt-5 flex gap-4 text-sm font-semibold">
+                <a href="#" class="text-brand-600 hover:underline dark:text-brand-400">Demo</a>
+                <a href="#" class="text-gray-600 hover:underline dark:text-gray-400">Kode</a>
+              </div>
+            </div>
+          </article>
+        </div>
+
+                <!-- Tombol menuju halaman semua proyek -->
+        <div class="reveal mt-12 text-center">
+          <a href="projects.html"
+            class="inline-flex items-center gap-2 rounded-lg border border-brand-600 px-6 py-3 font-semibold text-brand-700 transition hover:-translate-y-0.5 hover:bg-brand-600 hover:text-white focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 dark:border-brand-400 dark:text-brand-300 dark:hover:bg-brand-500 dark:hover:text-white dark:focus:ring-offset-gray-900">
+            Lihat Semua Proyek
+            <svg class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </section>
+    
+    <!-- ================= CONTACT ================= -->
+    <section id="contact" class="px-4 py-24 sm:px-6">
+      <div class="mx-auto max-w-6xl">
+
+        <div class="mb-12">
+          <p class="text-sm font-semibold uppercase tracking-widest text-brand-600 dark:text-brand-400">Kontak</p>
+          <h2 class="mt-2 text-3xl font-bold tracking-tight sm:text-4xl">Hubungi Saya</h2>
+        </div>
+
+        <div class="grid gap-12 lg:grid-cols-2">
+
+          <!-- Info kontak -->
+          <div>
+            <p class="max-w-md leading-relaxed text-gray-600 dark:text-gray-400">
+              Punya pertanyaan, ide proyek, atau ingin berkolaborasi? Kirim pesan
+              melalui formulir atau hubungi saya lewat kontak berikut.
+            </p>
+
+            <ul class="mt-8 space-y-4">
+              <li class="flex items-center gap-4">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M3 8l9 6 9-6M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Email</p>
+                  <a href="mailto:satrio@example.com" class="font-medium hover:text-brand-600 dark:hover:text-brand-400">satrio@example.com</a>
+                </div>
+              </li>
+
+              <li class="flex items-center gap-4">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17.657 16.657L13.414 20.9a2 2 0 01-2.828 0l-4.243-4.243a8 8 0 1111.314 0z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">Lokasi</p>
+                  <p class="font-medium">Bandar Lampung, Indonesia</p>
+                </div>
+              </li>
+
+              <li class="flex items-center gap-4">
+                <span class="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-brand-100 text-brand-700 dark:bg-brand-900/40 dark:text-brand-300">
+                  <svg class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+                  </svg>
+                </span>
+                <div>
+                  <p class="text-sm text-gray-500 dark:text-gray-400">GitHub</p>
+                  <a href="https://github.com/" target="_blank" rel="noopener noreferrer" class="font-medium hover:text-brand-600 dark:hover:text-brand-400">github.com/username</a>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Formulir (tampilan saja, belum mengirim ke server) -->
+          <form id="contact-form" novalidate
+            class="space-y-5 rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8 dark:border-gray-800 dark:bg-gray-900">
+
+            <div>
+              <label for="name" class="mb-1.5 block text-sm font-medium">Nama</label>
+              <input id="name" name="name" type="text" required placeholder="Nama lengkap Anda"
+                class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 placeholder-gray-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400/40 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-500">
+            </div>
+
+            <div>
+              <label for="email" class="mb-1.5 block text-sm font-medium">Email</label>
+              <input id="email" name="email" type="email" required placeholder="nama@email.com"
+                class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 placeholder-gray-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400/40 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-500">
+            </div>
+
+            <div>
+              <label for="subject" class="mb-1.5 block text-sm font-medium">Subjek</label>
+              <input id="subject" name="subject" type="text" required placeholder="Topik pesan"
+                class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 placeholder-gray-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400/40 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-500">
+            </div>
+
+            <div>
+              <label for="message" class="mb-1.5 block text-sm font-medium">Pesan</label>
+              <textarea id="message" name="message" rows="5" required placeholder="Tulis pesan Anda di sini..."
+                class="w-full resize-y rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-gray-900 placeholder-gray-400 transition focus:border-brand-500 focus:outline-none focus:ring-2 focus:ring-brand-400/40 dark:border-gray-700 dark:bg-gray-950 dark:text-gray-100 dark:placeholder-gray-500"></textarea>
+            </div>
+
+            <button type="submit"
+              class="w-full rounded-lg bg-brand-600 px-6 py-3 font-semibold text-white shadow-lg shadow-brand-600/30 transition hover:-translate-y-0.5 hover:bg-brand-700 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:ring-offset-2 dark:focus:ring-offset-gray-900">
+              Kirim Pesan
+            </button>
+
+            <!-- Pesan status (diisi oleh JavaScript) -->
+            <p id="form-status" class="hidden rounded-lg px-4 py-3 text-sm" role="status" aria-live="polite"></p>
+          </form>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ================= FOOTER ================= -->
+  <footer class="border-t border-gray-200 bg-gray-100 px-4 py-10 sm:px-6 dark:border-gray-800 dark:bg-gray-900">
+    <div class="mx-auto flex max-w-6xl flex-col items-center justify-between gap-6 md:flex-row">
+
+      <a href="#home" class="text-lg font-bold tracking-tight">
+        Portfolio <span class="text-brand-600 dark:text-brand-400">Satrio</span>
+      </a>
+
+      <ul class="flex flex-wrap justify-center gap-6 text-sm text-gray-600 dark:text-gray-400">
+        <li><a href="#about" class="transition hover:text-brand-600 dark:hover:text-brand-400">About</a></li>
+        <li><a href="#skills" class="transition hover:text-brand-600 dark:hover:text-brand-400">Skills</a></li>
+        <li><a href="#projects" class="transition hover:text-brand-600 dark:hover:text-brand-400">Projects</a></li>
+        <li><a href="#contact" class="transition hover:text-brand-600 dark:hover:text-brand-400">Contact</a></li>
+      </ul>
+
+      <p class="text-sm text-gray-500 dark:text-gray-400">
+        &copy; <span id="year">2026</span> Satrio Dwi Saipul Bagus
+      </p>
+    </div>
+  </footer>
+
+  <script src="./assets/js/main.js"></script>
+
+</body>
+</html>

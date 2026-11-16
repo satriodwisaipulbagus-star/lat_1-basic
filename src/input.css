@@ -1,0 +1,54 @@
+@import "tailwindcss";
+
+/* Dark mode aktif jika <html> memiliki class "dark" */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Palet warna kustom Portfolio Satrio */
+@theme {
+  --color-brand-50: #f0fdfa;
+  --color-brand-100: #ccfbf1;
+  --color-brand-200: #99f6e4;
+  --color-brand-300: #5eead4;
+  --color-brand-400: #2dd4bf;
+  --color-brand-500: #14b8a6;
+  --color-brand-600: #0d9488;
+  --color-brand-700: #0f766e;
+  --color-brand-800: #115e59;
+  --color-brand-900: #134e4a;
+}
+
+/* Scroll halus saat klik menu */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Animasi muncul saat scroll */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* Bar skill: mulai dari 0, terisi saat kartu terlihat */
+.skill-bar {
+  width: 0;
+  transition: width 1s ease-out 0.2s;
+}
+
+/* Hormati pengguna yang mematikan animasi di sistemnya */
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  .skill-bar {
+    transition: none;
+  }
+}
